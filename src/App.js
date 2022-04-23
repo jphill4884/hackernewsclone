@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 /*  import ClipLoader from "react-spinners/ClipLoader"; */ 
 import './App.css';
-<<<<<<< Updated upstream
-=======
 import StoryCard from './StoryCard.js'
-import NavSearch from './StoryCard.js'
->>>>>>> Stashed changes
+import NavSearch from './NavSearch.js'
+
 
 function App() {
 
@@ -50,11 +48,9 @@ function App() {
 
   return (
     <div className="App">
-<<<<<<< Updated upstream
-    <h1>Hello world!</h1>
-=======
+
     <NavSearch/> 
->>>>>>> Stashed changes
+
     </div>
   );
 }
