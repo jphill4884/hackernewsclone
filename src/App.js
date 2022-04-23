@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 /*  import ClipLoader from "react-spinners/ClipLoader"; */ 
 import './App.css';
+<<<<<<< Updated upstream
+=======
+import StoryCard from './StoryCard.js'
+import NavSearch from './StoryCard.js'
+>>>>>>> Stashed changes
 
 function App() {
 
@@ -32,7 +37,7 @@ function App() {
         setIsLoading(false);
       });
   }, []);
-  console.log(news.hits); 
+/*   console.log(news.hits);  */
 
 /*    if (isLoading) {
     return (
@@ -45,7 +50,11 @@ function App() {
 
   return (
     <div className="App">
+<<<<<<< Updated upstream
     <h1>Hello world!</h1>
+=======
+    <NavSearch/> 
+>>>>>>> Stashed changes
     </div>
   );
 }
