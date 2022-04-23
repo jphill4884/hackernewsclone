@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import BeatLoader from "react-spinners/BeatLoader";
+import React, { useState, useEffect } from "react";
+/*  import ClipLoader from "react-spinners/ClipLoader"; */ 
 import './App.css';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://hn.algolia.com/api/v1/search?query=""&restrictSearchableAttributes=url") // GET by default
+    fetch("http://hn.algolia.com/api/v1/search?query=&restrictSearchableAttributes=url") // GET by default
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -22,6 +22,8 @@ function App() {
       })
       .then((data) => {
         setNews(data);
+         console.log(data.hits);
+        
         setIsLoading(false);
       })
       .catch((error) => {
@@ -30,14 +32,15 @@ function App() {
         setIsLoading(false);
       });
   }, []);
+  console.log(news.hits); 
 
-  if (isLoading) {
+/*    if (isLoading) {
     return (
       <div className="center">
-        <BeatLoader color="black" size={30} />
+        <ClipLoader color="black" size={30} />
       </div>
     );
-  }
+  } */ 
 
 
   return (
