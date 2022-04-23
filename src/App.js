@@ -5,6 +5,7 @@ import StoryCard from './StoryCard.js'
 import NavSearch from './NavSearch.js'
 
 
+
 function App() {
 
   const [news,setNews]=useState();
@@ -48,9 +49,7 @@ function App() {
 
   return (
     <div className="App">
-
     <NavSearch/> 
-
     </div>
   );
 }
