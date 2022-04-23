@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 /*  import ClipLoader from "react-spinners/ClipLoader"; */ 
 import './App.css';
+import StoryCard from './StoryCard.js'
 
 function App() {
 
@@ -45,7 +46,6 @@ function App() {
 
   return (
     <div className="App">
-    <h1>Hello world!</h1>
     </div>
   );
 }

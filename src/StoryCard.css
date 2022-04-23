@@ -1,0 +1,39 @@
+.story-card {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.story-card-title {
+    display: flex;
+    flex-direction: row;
+}
+
+.story-card-details {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    font-size: smaller;
+}
+
+.story-card-details p {
+    margin-right: 5px;
+}
+
+.story-card-title a {
+    text-decoration: none;
+    display: block;
+    font-size: 1.17em;
+    margin: 1em;
+    font-weight: bold;
+}
+
+button {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+}
+
+.upvote {
+    font-size: medium;
+}
