@@ -1,42 +1,44 @@
 .story-card {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    background-color: lightgray;
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 .story-card-title {
     display: flex;
     flex-direction: row;
+    font-size: 10pt;
+    height: 20px;
 }
 
 .story-card-details {
     display: flex;
     flex-direction: row;
+    margin-left: 40px;
     align-content: space-around;
-    font-size: smaller;
+    font-size: 7pt;
+    height: 15px;
 }
 
 .story-card-details p {
     margin-right: 5px;
     color: #828282;
+    padding-top: 0px;
 }
 
 .story-card-title a {
     text-decoration: none;
     display: block;
-    font-size: 1.17em;
-    margin: 1em;
-    font-weight: bold;
+    font-size: 10pt;
+    margin: 1em 0.5em;
     color: #000000;
 }
 
 button {
     background: none!important;
+    font-size: 8pt;
+    height: 10px;
+    width: 10px;
     border: none;
-    padding: 0!important;
-}
-
-.upvote {
-    font-size: medium;
+    margin: 15px 0px;
 }
