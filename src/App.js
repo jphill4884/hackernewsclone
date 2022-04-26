@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-/*  import ClipLoader from "react-spinners/ClipLoader"; */ 
+import ClipLoader from "react-spinners-kit"; 
 import './App.css';
 import StoryCard from './StoryCard.js'
 
@@ -32,21 +32,23 @@ function App() {
       });
   }, []);
  
-/*    if (isLoading) {
-    return (
-      <div className="center">
-        <ClipLoader color="black" size={30} />
-      </div>
-    );
-  } */
-
   let array = [];
 
-  if (news) {
-    array = news && Object.values(news)
-  
+    /* if (isLoading) {
+      return (
+        <div className="center">
+          <ClipLoader color="black" size={30} />
+      </div>
+    );
+  } else {
+  }
+*/
+    if (news) {
+    array = Object.values(news)
+
   return (
     <div className="App">
+    <div className="temp-header">Hacker News  new | post | comments | ask | show | jobs | submit</div>
     {array[0].map((story, index) => <StoryCard key={index} story={story}/>)}
     </div>
     );

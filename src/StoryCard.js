@@ -4,14 +4,15 @@ import "./StoryCard.css";
 
 
 export default function StoryCard(props) {
-  console.log(props)
-    return (
+  
+  return (
+    
         <div className="story-card">
           <div className="story-card-title">
-            <h3>1.</h3>
+            <p>10.</p>
             <button className="upvote">▲</button>
             <a href={props.story.url} target="_blank" rel="noreferrer" className="story-title">{props.story.title}</a>
-            <a href="https://www.google.com" target="_blank" rel="noreferrer" className="story-domain">()</a>
+            <a href="https://www." target="_blank" rel="noreferrer" className="story-domain">()</a>
           </div>  
           <div className="story-card-details">
             <p>{props.story.points} points</p>
