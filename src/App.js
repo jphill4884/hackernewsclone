@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import ClipLoader from "react-spinners-kit"; 
+/* import ClipLoader from "react-spinners-kit";  */
 import './App.css';
 import StoryCard from './StoryCard.js'
+import NavSearch from './NavSearch.js'
+
+
 
 function App() {
 
@@ -31,8 +34,10 @@ function App() {
         setIsLoading(false);
       });
   }, []);
+
  
   let array = [];
+
 
     /* if (isLoading) {
       return (
@@ -48,8 +53,12 @@ function App() {
 
   return (
     <div className="App">
-    <div className="temp-header">Hacker News  new | post | comments | ask | show | jobs | submit</div>
+
+    <NavSearch/> 
+
+    {/* <div className="temp-header">Hacker News  new | post | comments | ask | show | jobs | submit</div> */}
     {array[0].map((story, index) => <StoryCard key={index} story={story}/>)}
+
     </div>
     );
   }
