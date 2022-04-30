@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import StoryCard from './StoryCard.js'
 import NavSearch from './NavSearch.js'
+import Footer from "./Footer.js"
 
 //  import BarLoader from "react-spinners/BarLoader";
  import ClipLoader from "react-spinners/ClipLoader";
@@ -61,7 +62,6 @@ const  numOfResults=(num)=>{
         setIsLoading(false);
       });
   }, [wordQuery,hitsPage]);
-
 
   // https://www.npmjs.com/package/react-paginate
 
