@@ -1,21 +1,48 @@
 import React, { useState, useEffect } from "react";
-/* import ClipLoader from "react-spinners-kit";  */
 import './App.css';
 import StoryCard from './StoryCard.js'
 import NavSearch from './NavSearch.js'
 
+//  import BarLoader from "react-spinners/BarLoader";
+ import ClipLoader from "react-spinners/ClipLoader";
 
 
 function App() {
 
   const [news, setNews]=useState();
+  const [wordQuery, setWordQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  
+  // const [tags, setTag] = useState("story");
+  const [hitsPage, setHitsPage] = useState("10");
+
+const searchWord=(word)=>{
+  
+ setWordQuery(word);
+}
+
+const  numOfResults=(num)=>{   
+   setHitsPage(num);  
+}
+
+
+/* http://hn.algolia.com/api/v1/search?query=&restrictSearchableAttributes=url&tag=story&hitsPerPage=100*/
+
 
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch("http://hn.algolia.com/api/v1/search?query=&restrictSearchableAttributes=url") 
+    setIsLoading(true);   
+
+    const urlSearch= new URL("http://hn.algolia.com/api/v1/search_by_date");
+    urlSearch.searchParams.set("query", wordQuery);
+    urlSearch.searchParams.set("restrictSearchableAttributes", "url");
+    urlSearch.searchParams.set("tags", "story");
+    urlSearch.searchParams.set("hitsPerPage", hitsPage);
+   
+     console.log("Hello URL:"+ urlSearch); 
+
+    fetch(urlSearch) 
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -33,35 +60,42 @@ function App() {
         setIsError(true);
         setIsLoading(false);
       });
-  }, []);
+  }, [wordQuery,hitsPage]);
 
+
+  // https://www.npmjs.com/package/react-paginate
+
+  // npm install --save react-spinners
  
-  let array = [];
+  // let array = [];
 
 
-    /* if (isLoading) {
+   if (isLoading) {
       return (
         <div className="center">
-          <ClipLoader color="black" size={30} />
+         {/* <BarLoader color="black" size={30}/> */}
+         <ClipLoader color="#000000" size={150} />
+
       </div>
-    );
-  } else {
-  }
-*/
-    if (news) {
-    array = Object.values(news)
+    );  
+  } 
+
+    // if (news) {
+    // array = Object.values(news)
+    
+    /* console.log(array); */
+   
 
   return (
     <div className="App">
 
-    <NavSearch/> 
-
-    {/* <div className="temp-header">Hacker News  new | post | comments | ask | show | jobs | submit</div> */}
-    {array[0].map((story, index) => <StoryCard key={index} story={story}/>)}
+    <NavSearch searchWord={searchWord} numOfResults={numOfResults}/> 
+ 
+    {news && news.hits.map((story, index) => <StoryCard key={index} story={story}/>)}
 
     </div>
     );
-  }
+  
 }
 
 export default App;
