@@ -90,8 +90,8 @@ const  numOfResults=(num)=>{
     <div className="App">
 
     <NavSearch searchWord={searchWord} numOfResults={numOfResults}/> 
- 
-    {news && news.hits.map((story, index) => <StoryCard key={index} story={story}/>)}
+    {news && news.hits.filter(story => story.url !== null).map((story, index) => <StoryCard key={index} story={story} storyNum={index} />)}
+  {/*   {news && news.hits.map((story, index) => <StoryCard key={index} story={story}/>)} */}
 
     </div>
     );
