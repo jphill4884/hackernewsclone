@@ -5,10 +5,10 @@ import "./NavSearch.css";
 
 export default function NavSearch(props) {
   return (
-        <>  <div class="container">
-                <div class="logo"></div>
+        <>  <div className="container">
+                <div className="logo"></div>
 
-                 <div class="container2">
+                 <div className="container2">
                     <h2>Hacker News</h2>
                         <div class="nav">
                         <a href="#new">new</a>
@@ -28,7 +28,7 @@ export default function NavSearch(props) {
                         </div>
 
                 </div>
-                <div class="input">
+                <div className="input">
                    <input type="text" placeholder="Search.."/>
                 </div> 
             </div>

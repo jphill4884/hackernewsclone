@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-/* import ClipLoader from "react-spinners-kit";  */
 import './App.css';
 import StoryCard from './StoryCard.js'
 import NavSearch from './NavSearch.js'
+import Footer from "./Footer.js"
 
 
 
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://hn.algolia.com/api/v1/search?query=&restrictSearchableAttributes=url") 
+    fetch("http://hn.algolia.com/api/v1/search_by_date?query=&restrictSearchableAttributes=url&tags=story&hitsPerPage=30") 
       .then((response) => {
         if (!response.ok) {
           throw new Error(
@@ -35,31 +35,16 @@ function App() {
       });
   }, []);
 
- 
-  let array = [];
 
 
-    /* if (isLoading) {
-      return (
-        <div className="center">
-          <ClipLoader color="black" size={30} />
-      </div>
-    );
-  } else {
-  }
-*/
     if (news) {
-    array = Object.values(news)
 
-  return (
-    <div className="App">
-
-    <NavSearch/> 
-
-    {/* <div className="temp-header">Hacker News  new | post | comments | ask | show | jobs | submit</div> */}
-    {array[0].map((story, index) => <StoryCard key={index} story={story}/>)}
-
-    </div>
+      return (
+        <div className="App">
+          <NavSearch/> 
+          {news.hits.filter(story => story.url !== null).map((story, index) => <StoryCard key={index} story={story} storyNum={index}/>)}
+          <Footer />
+        </div>
     );
   }
 }
