@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import StoryCard from './StoryCard.js'
 import NavSearch from './NavSearch.js'
+import Footer from "./Footer";
 
 //  import BarLoader from "react-spinners/BarLoader";
  import ClipLoader from "react-spinners/ClipLoader";
@@ -13,7 +14,8 @@ function App() {
   const [wordQuery, setWordQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [Page, setPage] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalpages, setTotalPages] = useState();
   
   // const [tags, setTag] = useState("story");
   const [hitsPage, setHitsPage] = useState("10");
@@ -26,6 +28,11 @@ const searchWord=(word)=>{
 const  numOfResults=(num)=>{   
    setHitsPage(num);  
 }
+
+const changePage =(num)=> {
+  if(num+page<1)return;
+  setPage(num+page)  
+} 
 
 
 /* http://hn.algolia.com/api/v1/search?query=&restrictSearchableAttributes=url&tag=story&hitsPerPage=100*/
@@ -40,9 +47,9 @@ const  numOfResults=(num)=>{
     urlSearch.searchParams.set("restrictSearchableAttributes", "url");
     urlSearch.searchParams.set("tags", "story");
     urlSearch.searchParams.set("hitsPerPage", hitsPage);
-    urlSearch.searchParams.set("Page", 1);
+    urlSearch.searchParams.set("page", page);
    
-     console.log("Hello URL:"+ urlSearch); 
+    /*  console.log("Hello URL:"+ urlSearch);  */
 
     fetch(urlSearch) 
       .then((response) => {
@@ -55,6 +62,8 @@ const  numOfResults=(num)=>{
       })
       .then((data) => {
         setNews(data);
+        console.log(data.nbPages)
+        setTotalPages(data.nbPages)
         setIsLoading(false);
       })
       .catch((error) => {
@@ -62,7 +71,7 @@ const  numOfResults=(num)=>{
         setIsError(true);
         setIsLoading(false);
       });
-  }, [wordQuery,hitsPage]);
+  }, [wordQuery,hitsPage, page]);
 
 
   // https://www.npmjs.com/package/react-paginate
@@ -82,21 +91,15 @@ const  numOfResults=(num)=>{
     );  
   } 
 
-    // if (news) {
-    // array = Object.values(news)
-    
-    /* console.log(array); */
-   
-
+  
   return (
     <div className="App">
 
     <NavSearch searchWord={searchWord} numOfResults={numOfResults}/> 
-
-
  
     {news && news.hits.filter(story => story.url !== null).map((story, index) => <StoryCard key={index} story={story} storyNum={index} />)}
 
+    <Footer page={page} totalpages={totalpages} changePage={(num)=>changePage(num)}/>
 
     </div>
     );
