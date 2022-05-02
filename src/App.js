@@ -13,6 +13,7 @@ function App() {
   const [wordQuery, setWordQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [Page, setPage] = useState(false);
   
   // const [tags, setTag] = useState("story");
   const [hitsPage, setHitsPage] = useState("10");
@@ -39,6 +40,7 @@ const  numOfResults=(num)=>{
     urlSearch.searchParams.set("restrictSearchableAttributes", "url");
     urlSearch.searchParams.set("tags", "story");
     urlSearch.searchParams.set("hitsPerPage", hitsPage);
+    urlSearch.searchParams.set("Page", 1);
    
      console.log("Hello URL:"+ urlSearch); 
 
