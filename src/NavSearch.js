@@ -14,10 +14,10 @@ export default function NavSearch({ searchWord, numOfResults }) {
   return (
     <>
       {" "}
-      <div className="container">
+      <div className="container1">
         <div className="logo"></div>
 
-        <div className="container2">
+        <div className="container11">
           <h2>Hacker News</h2>
           <div className="nav">
             <a href="#new">new</a>
@@ -36,11 +36,15 @@ export default function NavSearch({ searchWord, numOfResults }) {
           </div>
         </div>
 
+        <div className="container2">
+
         <div className="select">
         <select id="results" value={results}
            onChange={(e) => setResults1(e.target.value)}
         >
           <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
           <option value="100">100</option>
           <option value="500">500</option>
           <option value="1000">1000</option>
@@ -48,7 +52,7 @@ export default function NavSearch({ searchWord, numOfResults }) {
         </select>
         </div>
 
-        <div className="input">
+        
           <form onSubmit={(e) => {
             e.preventDefault();
             searchWord(input)
