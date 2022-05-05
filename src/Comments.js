@@ -32,7 +32,7 @@ export default function Comments() {
     setPage(num+page)  
   } 
   
-  
+  {/* <a href="https://news.ycombinator.com/item?id=27516212">171 comments</a> */}
   /* https://hacker-news.firebaseio.com/v0/item/30687212.json?print=pretty, where 30687212 is comment ID */
   /* http://hn.algolia.com/api/v1/search?tags=comment,story_X, where X is objectID for the story*/
   
