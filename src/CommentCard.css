@@ -1,0 +1,20 @@
+.comment-card {
+    display: flex;
+    flex-direction: column;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.comment-card-details {
+    display: flex;
+    flex-direction: row;
+    margin-left: 30px;
+    align-content: space-around;
+    font-size: 7pt;
+    height: 15px;
+}
+
+.story-card-details p {
+    margin-right: 5px;
+    color: #828282;
+    padding-top: 0px;
+}
