@@ -49,7 +49,7 @@ const changePage =(num)=> {
     urlSearch.searchParams.set("hitsPerPage", hitsPage);
     urlSearch.searchParams.set("page", page);
    
-     console.log("Hello URL:"+ urlSearch); 
+     //console.log("Hello URL:"+ urlSearch); 
 
     fetch(urlSearch) 
       .then((response) => {
@@ -62,7 +62,7 @@ const changePage =(num)=> {
       })
       .then((data) => {
         setNews(data);
-        console.log(data)
+        //console.log(data)
         setTotalPages(data.nbPages)
         setIsLoading(false);
       })
@@ -95,7 +95,7 @@ const changePage =(num)=> {
   return (
     <div className="Home">
 
-    <NavSearch searchWord={searchWord} numOfResults={numOfResults}/> 
+    <NavSearch searchWord={searchWord} numOfResults={numOfResults} hitsPage={hitsPage}/> 
  
     {news && news.hits.filter(story => story.url !== null).map((story, index) => <StoryCard key={index} story={story} storyNum={index} />)}
 

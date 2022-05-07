@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import "./NavSearch.css";
 
-export default function NavSearch({ searchWord, numOfResults }) {
+export default function NavSearch({ searchWord, numOfResults, hitsPage }) {
   const [input, setInput] = useState("");
-  const [results, setResults] = useState("10");
-  console.log(input);
+  const [results, setResults] = useState();
+  console.log(results);
 
-  const setResults1=(val)=>{
-    setResults(val);
-    numOfResults(val);
+  const setResults1=(e)=>{
+    e.preventDefault();
+    setResults(e.target.value);
+    console.log(e.target.value);
+    numOfResults(e.target.value);
   }
 
   return (
@@ -39,8 +41,8 @@ export default function NavSearch({ searchWord, numOfResults }) {
         <div className="container2">
 
         <div className="select">
-        <select id="results" value={results}
-           onChange={(e) => setResults1(e.target.value)}
+        <select id="results" value={hitsPage}
+           onChange={setResults1}
         >
           <option value="10">10</option>
           <option value="20">20</option>
