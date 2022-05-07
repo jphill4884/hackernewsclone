@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TimeAgo from 'timeago-react';
 import "./StoryCard.css";
 
@@ -7,6 +7,16 @@ export default function StoryCard(props) {
 
   const url = new URL(props.story.url);
   const domain = url.hostname;
+
+  const [votes, setVotes] = useState(props.story.points);
+  const [voted, setVoted] = useState(false);
+
+  const upvote = () => {
+    if (!voted) {
+      setVotes(votes + 1);
+      setVoted(true);
+    }
+  }
 
   // seconds
   // minutes
@@ -24,12 +34,12 @@ export default function StoryCard(props) {
         <div className="story-card">
           <div className="story-card-title">
             <p>{props.storyNum+1}.</p>
-            <button className="upvote">▲</button>
+            <button className="upvote" onClick={upvote}>▲</button>
             <a href={props.story.url} target="_blank" rel="noopener noreferrer" className="story-title">{props.story.title}</a>
             <a href={url} target="_blank" rel="noopener noreferrer" className="story-domain">({domain})</a>
           </div>  
           <div className="story-card-details">
-            <p>{props.story.points} points</p>
+            <p>{votes} points</p>
             <p>by {props.story.author}</p>
             <p><TimeAgo datetime={props.story.created_at} locale='de'/></p>
             <p>| hide |</p>
