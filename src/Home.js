@@ -37,7 +37,7 @@ function Home() {
   useEffect(() => {
     setIsLoading(true);
 
-    const urlSearch = new URL("http://hn.algolia.com/api/v1/search_by_date");
+    const urlSearch = new URL("https://hn.algolia.com/api/v1/search_by_date");
     urlSearch.searchParams.set("query", wordQuery);
     urlSearch.searchParams.set("restrictSearchableAttributes", "url");
     urlSearch.searchParams.set("tags", "story");
