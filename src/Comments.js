@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-import Footer from "./Footer";
+import CommentCard from "./CommentCard";
+
 
 
 export default function Comments() {
@@ -29,7 +30,9 @@ export default function Comments() {
   /* https://hacker-news.firebaseio.com/v0/item/30687212.json?print=pretty, where 30687212 is comment ID */
   /* http://hn.algolia.com/api/v1/search?tags=comment,story_X, where X is objectID for the story*/
   
-  const commentID=8422599;
+  //const commentID=8422599;
+  const commentID= 8422771;
+ 
   
     useEffect(() => {
       setIsLoading(true);   
@@ -48,7 +51,7 @@ export default function Comments() {
         })
         .then((data) => {
           setComments(data);
-          //console.log(data)         
+          console.log(data)         
           setIsLoading(false);
         })
         .catch((error) => {
@@ -58,31 +61,37 @@ export default function Comments() {
         });
     }, []);
   
-    let objRender={};
+    let objRender;
 
     if (comments) {
     const children =comments.children;
-    console.log(children);
-    console.log(children[0].created_at);
-    console.log(new Date(children[0].created_at));
-    const newChildren= children.map((x) => {return( {...x, created_at:new Date(x.created_at)} )})
+   // console.log(children);
+    //console.log(children[0].created_at);
+    //console.log(new Date(children[0].created_at));
+    //const newChildren= children.map((x) => {return( {...x, created_at:new Date(x.created_at)} )})
 
     //const sortedChildren = newChildren.sort( (objA, objB) => new Date(objA.created_at) - new Date(objB.created_at),    );
     const sortedChildren = [...children].sort( (objA, objB) => objA.created_at_i - objB.created_at_i,    );
-    console.log(sortedChildren);
+    //console.log(sortedChildren);
     
-    for (let i in sortedChildren){
-      
-      objRender.id= sortedChildren[i].id;
-      console.log(sortedChildren[i]);
-      objRender.text=sortedChildren[i].text;
-      objRender.parentId=sortedChildren[i].parent_id;
-      objRender.timeAgo="XXX";
-      if (sortedChildren[i].children.length==0) return;
-    }
-    console.log(objRender);
+
+    objRender = sortedChildren.map ((x) =>
+      {
+        let myObj = {
+          id: x.id,
+          children:x.children,
+          text:x.text,
+          parentId:x.parent_id ,
+          created_at:x.created_at ,
+          author:x.author,
+          
+        }
+        return myObj;
+      })
+      console.log(objRender);
+
  
-    } 
+  }
   
      if (isLoading) {
         return (
@@ -94,17 +103,38 @@ export default function Comments() {
       );  
     } 
 
+     function renderComments(parentComment) {
+      parentComment && parentComment.map( (x, index)=>{ 
+
+        let {
+          id,
+         
+          text,
+          created_at ,
+          author          
+        } =x;
+
+       console.log(x.children); 
+        if (x.children.length=0)
+        return <CommentCard key={index} id= {id} text={text} created_at={created_at} author={author}  />
+        if (x.children.length>0)
+        return renderComments(x.children)
+      } )
+    } 
+ 
+    
+
+
 
 
 
   return (
     <div>
-      <h2>This is a comment</h2>
-
-     
+      <h2>Here the comments to the New clicked id: {commentID} </h2>
+      {objRender && renderComments(objRender)}
+      
     </div>
   )
 }
 
-
-// <Footer page={page} totalpages={totalpages} changePage={(num)=>changePage(num)}/> // New Footer??
+//{objRender && renderComments(objRender)}
