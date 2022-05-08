@@ -62,7 +62,7 @@ const changePage =(num)=> {
       })
       .then((data) => {
         setNews(data);
-        //console.log(data)
+        console.log(data)
         setTotalPages(data.nbPages)
         setIsLoading(false);
       })
