@@ -1,33 +1,42 @@
 import React from 'react';
 import TimeAgo from 'timeago-react';
 import "./CommentCard.css";
+import parse from 'html-react-parser';
 
 
-export default function CommentCard({id, text, created_at, author}) {
-  
+export default function CommentCard({indentation, parentComment}) {
 
- // const url = new URL(props.story.url);
-  //const domain = url.hostname;
-
-function writeText  () {
-  return { __html:text}
+function writeText  (text) { 
+    const textParsed =parse(""+text);  
+   return textParsed
 }
 
 
   return (
-    
-        <div className="comment-card"> 
+    <>
+       {parentComment&& parentComment.map( (x, index) =>{console.log(x);
+         return(      
+            
        
-          <div className="comment-card-details">
-          <p>{id}</p>
-            <p>{author}</p>
-            <p><TimeAgo datetime={created_at} locale='de'/></p>
-          </div>
-          <div className="textComment">
-          
-           <p dangerouslySetInnerHTML={ writeText() } />
-           
-          </div>
-        </div>
+        <div key={index} className="comment-card">         
+          <div className={"identation"+indentation}>
+
+            <div className="comment-card-details">
+              <button className="upvote">▲</button>
+              <p>{x.id}</p>
+              <p>{x.author}</p>
+              <p>{new Date(x.created_at).toGMTString()}  (<TimeAgo datetime={x.created_at} locale='de'/>)</p>
+              <p>{x.points} points</p>
+            </div>
+
+            <div className="textComment">            
+                {writeText(x.text) }            
+            </div> 
+            { x.children.length>0 && <CommentCard indentation ={indentation+1} parentComment={x.children}   /> }
+             </div>
+        </div>     
+
+        ) } )}
+    </>
     )
 }

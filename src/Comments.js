@@ -51,7 +51,7 @@ export default function Comments() {
         })
         .then((data) => {
           setComments(data);
-          console.log(data)         
+          //console.log(data)         
           setIsLoading(false);
         })
         .catch((error) => {
@@ -62,6 +62,7 @@ export default function Comments() {
     }, []);
   
     let objRender;
+    let sortedChildren;
 
     if (comments) {
     const children =comments.children;
@@ -71,7 +72,7 @@ export default function Comments() {
     //const newChildren= children.map((x) => {return( {...x, created_at:new Date(x.created_at)} )})
 
     //const sortedChildren = newChildren.sort( (objA, objB) => new Date(objA.created_at) - new Date(objB.created_at),    );
-    const sortedChildren = [...children].sort( (objA, objB) => objA.created_at_i - objB.created_at_i,    );
+    sortedChildren = [...children].sort( (objA, objB) => objA.created_at_i - objB.created_at_i,    );
     //console.log(sortedChildren);
     
 
@@ -88,7 +89,7 @@ export default function Comments() {
         }
         return myObj;
       })
-      console.log(objRender);
+      //console.log(objRender);
 
  
   }
@@ -105,33 +106,31 @@ export default function Comments() {
 
      function renderComments(parentComment) {
       parentComment && parentComment.map( (x, index)=>{ 
-
-        let {
+        console.log(parentComment);
+/*         let  {
           id,
          
           text,
           created_at ,
           author          
-        } =x;
+        } =x; */
 
-       console.log(x.children); 
-        if (x.children.length=0)
-        return <CommentCard key={index} id= {id} text={text} created_at={created_at} author={author}  />
-        if (x.children.length>0)
-        return renderComments(x.children)
+       //console.log(x.children); 
+        //if (x.children.length=0)
+        return <CommentCard key={index} id= {x.id} text={x.text} created_at={x.created_at} author={x.author}  />
+      // if (x.children.length>0)
+      // return renderComments(x.children)
       } )
     } 
- 
+
     
-
-
-
 
 
   return (
     <div>
       <h2>Here the comments to the New clicked id: {commentID} </h2>
-      {objRender && renderComments(objRender)}
+        <CommentCard indentation ={0} parentComment={sortedChildren}  /> 
+       {/*  {sortedChildren && sortedChildren.map( (x, index)=>  <CommentCard key={index} id= {x.id} text={x.text} created_at={x.created_at} author={x.author}  /> )} */}
       
     </div>
   )
