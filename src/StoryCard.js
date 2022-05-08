@@ -1,9 +1,11 @@
 import React from 'react';
 import TimeAgo from 'timeago-react';
 import "./StoryCard.css";
+import { NavLink } from "react-router-dom";
 
 
 export default function StoryCard(props) {
+  
 
   const url = new URL(props.story.url);
   const domain = url.hostname;
@@ -23,7 +25,7 @@ export default function StoryCard(props) {
     
         <div className="story-card">
           <div className="story-card-title">
-            <p>{props.storyNum+1}.</p>
+            <p >{props.storyNum+1}.</p>
             <button className="upvote">▲</button>
             <a href={props.story.url} target="_blank" rel="noopener noreferrer" className="story-title">{props.story.title}</a>
             <a href={url} target="_blank" rel="noopener noreferrer" className="story-domain">({domain})</a>
@@ -33,7 +35,7 @@ export default function StoryCard(props) {
             <p>by {props.story.author}</p>
             <p><TimeAgo datetime={props.story.created_at} locale='de'/></p>
             <p>| hide |</p>
-            <p>{props.story.num_comments} comments</p>
+            <p><NavLink to = {"/"+props.story.objectID}>{props.story.num_comments} comments</NavLink></p>
           </div>
         </div>
     )

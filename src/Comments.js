@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import CommentCard from "./CommentCard";
-
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Comments() {
@@ -11,6 +12,8 @@ export default function Comments() {
     //const [wordQuery, setWordQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const {commentId} = useParams();
+    const navigate=useNavigate();
   
 /*   const searchWord=(word)=>{
     
@@ -31,13 +34,13 @@ export default function Comments() {
   /* http://hn.algolia.com/api/v1/search?tags=comment,story_X, where X is objectID for the story*/
   
   //const commentID=8422599;
-  const commentID= 8422771;
+  
  
   
     useEffect(() => {
       setIsLoading(true);   
   
-      const urlComment= "http://hn.algolia.com/api/v1/items/"+commentID;
+      const urlComment= "http://hn.algolia.com/api/v1/items/"+commentId;
 
   
       fetch(urlComment) 
@@ -61,36 +64,12 @@ export default function Comments() {
         });
     }, []);
   
-    let objRender;
+   
     let sortedChildren;
 
     if (comments) {
     const children =comments.children;
-   // console.log(children);
-    //console.log(children[0].created_at);
-    //console.log(new Date(children[0].created_at));
-    //const newChildren= children.map((x) => {return( {...x, created_at:new Date(x.created_at)} )})
-
-    //const sortedChildren = newChildren.sort( (objA, objB) => new Date(objA.created_at) - new Date(objB.created_at),    );
-    sortedChildren = [...children].sort( (objA, objB) => objA.created_at_i - objB.created_at_i,    );
-    //console.log(sortedChildren);
-    
-
-    objRender = sortedChildren.map ((x) =>
-      {
-        let myObj = {
-          id: x.id,
-          children:x.children,
-          text:x.text,
-          parentId:x.parent_id ,
-          created_at:x.created_at ,
-          author:x.author,
-          
-        }
-        return myObj;
-      })
-      //console.log(objRender);
-
+    sortedChildren = [...children].sort( (objA, objB) => objA.created_at_i - objB.created_at_i,    );    
  
   }
   
@@ -101,39 +80,18 @@ export default function Comments() {
            <ClipLoader color="#000000" size={150} />
   
         </div>
-      );  
-    } 
-
-     function renderComments(parentComment) {
-      parentComment && parentComment.map( (x, index)=>{ 
-        console.log(parentComment);
-/*         let  {
-          id,
-         
-          text,
-          created_at ,
-          author          
-        } =x; */
-
-       //console.log(x.children); 
-        //if (x.children.length=0)
-        return <CommentCard key={index} id= {x.id} text={x.text} created_at={x.created_at} author={x.author}  />
-      // if (x.children.length>0)
-      // return renderComments(x.children)
-      } )
-    } 
-
-    
+      );  }  
 
 
   return (
-    <div>
-      <h2>Here the comments to the New clicked id: {commentID} </h2>
-        <CommentCard indentation ={0} parentComment={sortedChildren}  /> 
-       {/*  {sortedChildren && sortedChildren.map( (x, index)=>  <CommentCard key={index} id= {x.id} text={x.text} created_at={x.created_at} author={x.author}  /> )} */}
-      
+    <div >
+      <div style={{display:"flex"}}>
+        <h2 style={{color: "grey", fontSize:"15px"}}>Here the comments under the new clicked (Object_id: {commentId}) </h2>
+        <button style={{margin:"15px"}} onClick={()=>navigate ("/")}>Back</button>
+      </div>
+        <CommentCard indentation ={0} parentComment={sortedChildren}  />  
+        
     </div>
   )
 }
 
-//{objRender && renderComments(objRender)}

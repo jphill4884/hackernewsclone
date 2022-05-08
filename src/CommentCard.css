@@ -2,37 +2,56 @@
     display: flex;
     flex-direction: column;
     font-family: Verdana, Geneva, sans-serif;
-    margin-left: 10px;;
-
+    margin-left: 10px; 
 }
-.comment-card .identation1 {
+
+.textComment-parent {
+    font-size: 10pt;
+    
+    height:auto;
+
+    margin-left: 5px;
+    padding-left: 25px;
+    padding-bottom: 15px;;
+    border-left: 2px solid lightgrey;  
+    border-bottom: 2px solid  lightgrey;  
+    text-align: start; 
+  
+}
+
+.textComment-parent p {
+  margin:0}
+
+
+
+.comment-card .indentation1 {
     margin-left: 50px;}
 
-.comment-card .identation2 {
+.comment-card .indentation2 {
     margin-left: 50px;}
 
-.comment-card .identation3 {
+.comment-card .indentation3 {
     margin-left: 50px;}
 
-.comment-card .identation4 {
+.comment-card .indentation4 {
     margin-left: 50px;}
 
-.comment-card .identation5 {
+.comment-card .indentation5 {
     margin-left: 50px;}
 
-.comment-card .identation6 {
+.comment-card .indentation6 {
     margin-left: 50px;}  
 
-.comment-card .identation7 {
+.comment-card .indentation7 {
     margin-left: 50px;}  
 
-.comment-card .identation8 {
+.comment-card .indentation8 {
     margin-left: 50px;}  
         
-.comment-card .identation9 {
+.comment-card .indentation9 {
     margin-left: 50px;}   
 
-.comment-card .identation10 {
+.comment-card .indentation10 {
     margin-left: 50px;}  
 
 
@@ -53,7 +72,7 @@
 
 .comment-card-details p {
     margin:0 5px;
-    padding-top: 0px;
+    padding: 15px 0px 10px 0;
 }
 .comment-card-details button {
     margin-right:10px;
@@ -62,6 +81,8 @@
     color: #828282;
     height: 15px;
     text-align: start;
+    background: none!important;
+    border:0;
 }
 .textComment  {
     margin-left: 5px;
@@ -69,10 +90,11 @@
     border-left: 1px solid lightgrey;  
     border-bottom: 1px solid lightgrey;  
     text-align: start; 
+    font-size: 9pt;
 }
 
 .textComment p {
-    margin-top:5px;
+    margin-top:0px;
     margin-left: 0px;
-    padding: 0;    
+    padding: 0px;    
 }

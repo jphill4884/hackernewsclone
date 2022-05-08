@@ -14,14 +14,14 @@ function writeText  (text) {
 
   return (
     <>
-       {parentComment&& parentComment.map( (x, index) =>{console.log(x);
+       {parentComment&& parentComment.map( (x, index) =>{//console.log(x);
          return(      
             
        
         <div key={index} className="comment-card">         
-          <div className={"identation"+indentation}>
+          <div className={"indentation"+indentation}>
 
-            <div className="comment-card-details">
+            <div className={indentation===0?"comment-card-details parent":"comment-card-details"}>
               <button className="upvote">▲</button>
               <p>{x.id}</p>
               <p>{x.author}</p>
@@ -29,11 +29,12 @@ function writeText  (text) {
               <p>{x.points} points</p>
             </div>
 
-            <div className="textComment">            
+            <div className={indentation===0?"textComment-parent":"textComment"}>            
                 {writeText(x.text) }            
             </div> 
+
             { x.children.length>0 && <CommentCard indentation ={indentation+1} parentComment={x.children}   /> }
-             </div>
+          </div>
         </div>     
 
         ) } )}

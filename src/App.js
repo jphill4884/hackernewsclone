@@ -8,7 +8,7 @@ export default function App() {
     <div>
         <Routes>
             <Route path="/" element={ <Home/>} />         
-            <Route path="/comment" element={ <Comments/>} /> 
+            <Route path="/:commentId" element={ <Comments/>} /> 
 
         </Routes>
       

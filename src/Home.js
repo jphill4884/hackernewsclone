@@ -18,7 +18,7 @@ function Home() {
   const [totalpages, setTotalPages] = useState();
   
   // const [tags, setTag] = useState("story");
-  const [hitsPage, setHitsPage] = useState("10");
+  const [hitsPage, setHitsPage] = useState("50");
 
 const searchWord=(word)=>{
   
