@@ -3,6 +3,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import CommentCard from "./CommentCard";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import './Comments.css';
+import Footer from "./Footer";
 
 
 export default function Comments() {
@@ -75,9 +77,9 @@ export default function Comments() {
   
      if (isLoading) {
         return (
-          <div className="center">
+          <div className="spinner">
            {/* <BarLoader color="black" size={30}/> */}
-           <ClipLoader color="#000000" size={150} />
+           <ClipLoader color="#ff6600" size={350} speed={20}/>
   
         </div>
       );  }  
@@ -89,8 +91,10 @@ export default function Comments() {
         <h2 style={{color: "grey", fontSize:"15px"}}>Here the comments under the new clicked (Object_id: {commentId}) </h2>
         <button style={{margin:"15px"}} onClick={()=>navigate ("/")}>Back</button>
       </div>
+      <div className="containerComments">
         <CommentCard indentation ={0} parentComment={sortedChildren}  />  
-        
+      </div>  
+        <Footer/>
     </div>
   )
 }

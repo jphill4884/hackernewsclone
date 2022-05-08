@@ -1,65 +1,38 @@
-* {
- 
-    box-sizing: border-box;
-  }
-  
-
-
-.footer {
-    text-align: center;
-    flex-direction: row;
-    border-top: 3px solid #FF6600;
-    margin-top: 30px;
-    font-weight:600;
-
-}
-           
-.pagination {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    flex-direction: row;
-    margin-left: auto;
-    margin-right: auto;
-    color: #FF6600;
-    width: 450px;;
+.mainContainer {
     
-}             
+    position: static;
+    height: auto;
+    bottom:0px;
+    margin-bottom: 0;
 
-.page-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    color: #FF6600;
-    font-size: large;
+}
+
+
+.containerFooter{
+    position: relative;
+    height: 30px;
     margin: 10px 0;
-    height:35px;
-    padding: 0;
-}
-.middle {    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-    color: #FF6600;  
-    font-size: large;
-    margin: 10px 0;
-    height:35px;
+    
 }
 
-.left{
-    margin-right:0;
-    text-align: end;
-    background: none!important;
-    border:0px
-}
-.right{
-    margin-left:0;
-    text-align: start;
-    background: none!important;
-    border:0px
+.footer  { 
+    position:absolute;
+    bottom:0;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width:600px;  
+    font-size: 12px;
+    text-align: center;
+    overflow:hidden;
+
 }
 
-.left, .right, .middle { cursor: pointer; }
+.footer a { 
+    
+    color: grey;     
+    border-right:1px solid #FF6600;
+    padding: 0 10px;
+}
+.footer #last {border:0px}

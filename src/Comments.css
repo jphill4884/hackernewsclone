@@ -1,0 +1,13 @@
+.spinner  {
+    position: absolute;  
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -150px;
+  }
+
+  .containerComments {
+    height:500px;
+    margin-top:200px;
+    padding-bottom: 0px;
+  }

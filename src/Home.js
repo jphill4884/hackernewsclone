@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import './Home.css';
 import StoryCard from './StoryCard.js'
 import NavSearch from './NavSearch.js'
+import Pagination from "./Pagination";
 import Footer from "./Footer";
 
 //  import BarLoader from "react-spinners/BarLoader";
  import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 function Home() {
@@ -85,7 +87,7 @@ function Home() {
     return (
       <div className="spinner">
         {/* <BarLoader color="black" size={30}/> */}
-        <ClipLoader color="#000000" size={150} />
+        <ClipLoader color="#ff6600" size={350} speed={20} />
       </div>
     );
   } else {
@@ -102,11 +104,12 @@ function Home() {
             .map((story, index) => (
               <StoryCard key={index} story={story} storyNum={index} />
             ))}
-        <Footer
+        <Pagination
           page={page}
           totalpages={totalpages}
           changePage={(num) => changePage(num)}
         />
+        <Footer/>
       </div>
     );
   }
