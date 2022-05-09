@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import './Home.css';
-import StoryCard from './StoryCard.js'
-import NavSearch from './NavSearch.js'
+import "./Home.css";
+import StoryCard from "./StoryCard.js";
+import NavSearch from "./NavSearch.js";
 import Pagination from "./Pagination";
 import Footer from "./Footer";
 
 //  import BarLoader from "react-spinners/BarLoader";
- import ClipLoader from "react-spinners/ClipLoader";
-
-
+import ClipLoader from "react-spinners/ClipLoader";
 
 function Home() {
   const [news, setNews] = useState();
@@ -109,7 +107,7 @@ function Home() {
           totalpages={totalpages}
           changePage={(num) => changePage(num)}
         />
-        <Footer/>
+        <Footer />
       </div>
     );
   }

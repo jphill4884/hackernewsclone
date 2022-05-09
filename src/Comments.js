@@ -17,25 +17,6 @@ export default function Comments() {
     const {commentId} = useParams();
     const navigate=useNavigate();
   
-/*   const searchWord=(word)=>{
-    
-   setWordQuery(word);
-  }
-  
-  const  numOfResults=(num)=>{   
-     setHitsPage(num);  
-  } */
-  
-/*   const changePage =(num)=> {
-    if(num+page<1)return;
-    setPage(num+page)  
-  }  */
-  
-  {/* <a href="https://news.ycombinator.com/item?id=27516212">171 comments</a> */}
-  /* https://hacker-news.firebaseio.com/v0/item/30687212.json?print=pretty, where 30687212 is comment ID */
-  /* http://hn.algolia.com/api/v1/search?tags=comment,story_X, where X is objectID for the story*/
-  
-  //const commentID=8422599;
   
  
   
@@ -64,8 +45,29 @@ export default function Comments() {
           setIsError(true);
           setIsLoading(false);
         });
-    }, []);
+    }, [commentId]);
   
+
+    if (isError) {
+    return (
+      <div className="Home">
+        <h1>Error loading page, please refresh your page and try again</h1>
+      </div>
+    );
+  } else if (isLoading) {
+    return (
+      <div className="spinner">
+        {/* <BarLoader color="black" size={30}/> */}
+        <ClipLoader color="#ff6600" size={350} speed={20} />
+      </div>
+    );
+  }
+
+
+
+
+
+
    
     let sortedChildren;
 
@@ -75,14 +77,16 @@ export default function Comments() {
  
   }
   
-     if (isLoading) {
+/*      if (isLoading) {
         return (
           <div className="spinner">
-           {/* <BarLoader color="black" size={30}/> */}
+          
            <ClipLoader color="#ff6600" size={350} speed={20}/>
   
         </div>
-      );  }  
+      );  } 
+      
+    */
 
 
   return (

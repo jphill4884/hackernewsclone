@@ -65,15 +65,4 @@
 .left, .right, .middle { cursor: pointer; }
 
 
-.footer  { 
-    height: 40px;
-    font-size: 12px;
-}
 
-
-.footer a {
-    color: grey;     
-    border-right:1px solid #FF6600;
-    padding: 0 10px;
-}
-.footer #last {border:0px}

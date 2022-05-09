@@ -6,7 +6,7 @@ export default function Footer() {
     <div className="mainContainer">
      <div className="containerFooter">
       <div className="footer">
-        <span class="yclinks">
+        <span className="yclinks">
           <a href="newsguidelines.html">Guidelines</a>
           <a href="newsfaq.html">FAQ</a>
           <a href="lists">Lists</a>

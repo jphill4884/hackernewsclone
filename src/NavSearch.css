@@ -23,13 +23,13 @@
   }
   .container2 {
       display: flex;
-      text-align: end;
+      text-align: flex-end;
       margin-right: 20px;
       width: 100%;
       align-content: center;
-      justify-content: end;
+      justify-content: flex-end;
       align-self: center;
-      justify-self:end;
+      justify-self:flex-end;
   } 
   .container2 form { 
     align-self: center;    
