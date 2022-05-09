@@ -23,17 +23,17 @@ export default function NavSearch({ searchWord, numOfResults, hitsPage }) {
           <h2>Hacker News</h2>
           <div className="nav">
             <a href="#new">new</a>
-            <a href="#">|</a>
+            <span>|</span>
             <a href="#past">past</a>
-            <a href="#">|</a>
+            <span>|</span>
             <a href="#comments">comments</a>
-            <a href="#">|</a>
+            <span>|</span>
             <a href="#ask">ask</a>
-            <a href="#">|</a>
+            <span>|</span>
             <a href="#show">show</a>
-            <a href="#">|</a>
+            <span>|</span>
             <a href="#jobs">jobs</a>
-            <a href="#">|</a>
+            <span>|</span>
             <a href="#submit">submit</a>
           </div>
         </div>
