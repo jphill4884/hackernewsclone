@@ -56,8 +56,7 @@ export default function Comments() {
     );
   } else if (isLoading) {
     return (
-      <div className="spinner">
-        {/* <BarLoader color="black" size={30}/> */}
+      <div className="spinner">       
         <ClipLoader color="#ff6600" size={350} speed={20} />
       </div>
     );
@@ -77,16 +76,7 @@ export default function Comments() {
  
   }
   
-/*      if (isLoading) {
-        return (
-          <div className="spinner">
-          
-           <ClipLoader color="#ff6600" size={350} speed={20}/>
-  
-        </div>
-      );  } 
-      
-    */
+  let noComments=sortedChildren?sortedChildren.length:0;
 
 
   return (
@@ -97,7 +87,11 @@ export default function Comments() {
       </div>
       <div className="containerComments">
         <CommentCard indentation ={0} parentComment={sortedChildren}  />  
-      </div>  
+      </div>
+
+     {   <div className={noComments===0?"noComments":"separator"}>
+       {noComments===0&&<p>There are no comments to display at the moment</p>}
+      </div>   }
         <Footer/>
     </div>
   )

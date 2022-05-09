@@ -1,23 +1,24 @@
 .mainContainer {
     
     position: static;
-    height: auto;
+    height: 30px;
     bottom:0px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
+    margin-top: 20px;
+
 
 }
 
-
 .containerFooter{
     position: relative;
-    height: 30px;
-    margin: 10px 0;
+    height:20px;
+    margin-top: 30px 0;
     
 }
 
 .footer  { 
     position:absolute;
-    bottom:0;
+    bottom:15px;
     left: 0; 
     right: 0; 
     margin-left: auto; 
@@ -33,6 +34,6 @@
     
     color: grey;     
     border-right:1px solid #FF6600;
-    padding: 0 10px;
+    padding: 10px 10px;
 }
 .footer #last {border:0px}

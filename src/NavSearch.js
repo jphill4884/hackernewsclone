@@ -9,7 +9,7 @@ export default function NavSearch({ searchWord, numOfResults, hitsPage }) {
   const setResults1=(e)=>{
     e.preventDefault();
     setResults(e.target.value);
-    console.log(e.target.value);
+  //  console.log(e.target.value);
     numOfResults(e.target.value);
   }
 
